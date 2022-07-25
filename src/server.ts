@@ -1,18 +1,9 @@
-import express, { Request, Response, Router } from 'express';
+import 'reflect-metadata';
+import { createExpressServer } from 'routing-controllers';
 
-const app = express();
-const routes = Router();
-
-// JSON Support
-app.use(express.json());
-
-// Routes
-routes.get('/', (_req: Request, res: Response) => {
-    res.json({ message: 'Node.js tests' });
+const app = createExpressServer({
+    controllers: [__dirname + '/modules/**/controllers/*{.js,.ts}'],
 });
-
-// Include routes
-app.use(routes);
 
 // Start server
 app.listen(process.env.PORT ?? 4200, () => console.info ('Server started...'));
