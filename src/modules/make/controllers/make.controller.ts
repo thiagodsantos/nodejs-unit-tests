@@ -1,18 +1,19 @@
-import { Get, JsonController, Post } from "routing-controllers";
+import { Get, JsonController, Param, Post } from "routing-controllers";
 import { MakeService } from "@modules/make/services/make.services";
-import { container } from "@src/container";
+import container from '@src/container';
 
 @JsonController('/make')
 export class MakeController {
-  private makeService: MakeService;
-  
-  constructor() {
-    this.makeService = container.get(MakeService.name);
-  }
+  private readonly makeService: MakeService = container.resolve(MakeService);
   
   @Get()
-  getAllMakes() {
-    return this.makeService.getAllMakes();
+  async getAll() {
+    return await this.makeService.getAll();
+  }
+  
+  @Get('/:id')
+  async getMakeById(@Param('id') id: string) {
+    return await this.makeService.getById(id);
   }
   
   @Post()

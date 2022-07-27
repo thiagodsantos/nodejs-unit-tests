@@ -1,5 +1,9 @@
-export const MakeRepositoryIdentifier = 'MakeRepositoryInterface'
+import { Make } from "@modules/make/entities/make.entity";
+
+export const MakeRepositoryName = 'MakeRepositoryInterface';
 
 export interface MakeRepositoryInterface {
-  getAllMakes(): unknown;
+  getAll(): Promise<Make[]>;
+  getById(id: string): Promise<Make | []>;
+  create()
 }

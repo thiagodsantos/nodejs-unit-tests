@@ -3,7 +3,7 @@ import { Column, Entity, PrimaryColumn } from "typeorm";
 @Entity()
 export class Make {
   @PrimaryColumn()
-  id: number;
+  id: string;
 
   @Column()
   name: string;

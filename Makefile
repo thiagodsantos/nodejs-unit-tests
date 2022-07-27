@@ -14,3 +14,6 @@ npm-run:
 
 tsc:
 	$(docker_node) "tsc $(arg)"
+
+migration-generate:
+	$(docker_node) "npm run migration:generate ./migrations/$(file)"
