@@ -16,6 +16,7 @@ async function initDatabase() {
 async function initServer() {
   const app = createExpressServer({
     controllers: [__dirname + '/modules/**/controllers/*{.js,.ts}'],
+    development: true
   });
   
   try {
@@ -27,7 +28,7 @@ async function initServer() {
 }
 
 async function setUp() {
-  // await initDatabase();
+  await initDatabase();
   await initServer();
 }
 

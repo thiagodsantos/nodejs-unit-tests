@@ -1,39 +1,25 @@
 import { injectable } from "tsyringe";
-import { Make } from "@modules/make/entities/make.entity";
+import { datasource } from "@src/datasource";
+import { MakeEntity } from "@modules/make/entities/make.entity";
 import { MakeRepositoryInterface } from "@modules/make/repositories/make.repository";
 
 @injectable()
 export class MakeRepository implements MakeRepositoryInterface {
-  async getAll(): Promise<Make[]> {
-    return [
-      {
-        id: '1',
-        name: 'Audi'
-      },
-      {
-        id: '2',
-        name: 'BMW'
-      },
-      {
-        id: '3',
-        name: 'Chevrolet'
-      },
-      {
-        id: '4',
-        name: 'Dodge'
-      },
-    ]
+  private readonly repository = datasource.getRepository(MakeEntity);
+  
+  async getAll(): Promise<MakeEntity[]> {
+    return await this.repository.find({ order: { name: 'ASC' } });
   }
   
-  async getById(id: string): Promise<Make | []> {
-    const makes = await this.getAll();
-    
-    for (const make of makes) {
-      if (make.id === id) {
-        return make;
-      }
-    }
-    
-    return [];
+  async getById(id: string): Promise<MakeEntity | null> {
+    return await this.repository.findOneBy({ id });
+  }
+  
+  async getByName(name: string): Promise<MakeEntity | null> {
+    return this.repository.findOneBy({ name });
+  }
+  
+  async create(makeEntity: MakeEntity): Promise<MakeEntity> {
+    return await this.repository.save(makeEntity);
   }
 }

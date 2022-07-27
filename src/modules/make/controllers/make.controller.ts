@@ -1,5 +1,7 @@
-import { Get, JsonController, Param, Post } from "routing-controllers";
+import { constants } from "http2";
+import { Body, Get, Post, JsonController, Param, HttpCode, Res } from "routing-controllers";
 import { MakeService } from "@modules/make/services/make.services";
+import { CreateDTO } from "@modules/make/dto/create.dto";
 import container from '@src/container';
 
 @JsonController('/make')
@@ -17,7 +19,8 @@ export class MakeController {
   }
   
   @Post()
-  createMake() {
-    return 'Create a single make'
+  @HttpCode(constants.HTTP_STATUS_CREATED)
+  async create(@Body() createDTO: CreateDTO) {
+    return await this.makeService.create(createDTO);
   }
 }
