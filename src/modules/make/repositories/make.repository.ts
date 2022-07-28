@@ -4,7 +4,9 @@ export const MakeRepositoryName = 'MakeRepositoryInterface';
 
 export interface MakeRepositoryInterface {
   getAll(): Promise<MakeEntity[]>;
-  getById(id: string): Promise<MakeEntity | null>;
-  getByName(name: string): Promise<MakeEntity | null>
-  create(makeEntity: MakeEntity): Promise<MakeEntity>;
+  getById(id: string, withDeleted?: boolean): Promise<MakeEntity | null>;
+  getByName(name: string, withDeleted?: boolean): Promise<MakeEntity | null>;
+  create(makeEntity: MakeEntity): Promise<void>;
+  updateById(id: string, makeEntity: MakeEntity): Promise<void>;
+  deleteById(id: string): Promise<void>;
 }

@@ -1,7 +1,7 @@
-import { constants } from "http2";
-import { Body, Get, Post, JsonController, Param, HttpCode, Res } from "routing-controllers";
+import { Body, Delete, Get, JsonController, Param, Post, Put } from "routing-controllers";
 import { MakeService } from "@modules/make/services/make.services";
 import { CreateDTO } from "@modules/make/dto/create.dto";
+import { UpdateDTO } from "@modules/make/dto/update.dto";
 import container from '@src/container';
 
 @JsonController('/make')
@@ -14,13 +14,22 @@ export class MakeController {
   }
   
   @Get('/:id')
-  async getMakeById(@Param('id') id: string) {
+  async getById(@Param('id') id: string) {
     return await this.makeService.getById(id);
   }
   
   @Post()
-  @HttpCode(constants.HTTP_STATUS_CREATED)
   async create(@Body() createDTO: CreateDTO) {
     return await this.makeService.create(createDTO);
+  }
+  
+  @Put('/:id')
+  async update(@Param('id') id: string, @Body() updateDTO: UpdateDTO) {
+    return await this.makeService.updateById(id, updateDTO);
+  }
+  
+  @Delete('/:id')
+  async deleteById(@Param('id') id: string) {
+    return await this.makeService.deleteById(id);
   }
 }

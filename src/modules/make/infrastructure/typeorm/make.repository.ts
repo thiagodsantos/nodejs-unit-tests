@@ -11,15 +11,23 @@ export class MakeRepository implements MakeRepositoryInterface {
     return await this.repository.find({ order: { name: 'ASC' } });
   }
   
-  async getById(id: string): Promise<MakeEntity | null> {
-    return await this.repository.findOneBy({ id });
+  async getById(id: string, withDeleted: boolean = false): Promise<MakeEntity | null> {
+    return this.repository.findOne({ withDeleted, where: { id } });
   }
   
-  async getByName(name: string): Promise<MakeEntity | null> {
-    return this.repository.findOneBy({ name });
+  async getByName(name: string, withDeleted: boolean = false): Promise<MakeEntity | null> {
+    return this.repository.findOne({ withDeleted, where: { name } });
   }
   
-  async create(makeEntity: MakeEntity): Promise<MakeEntity> {
-    return await this.repository.save(makeEntity);
+  async create(makeEntity: MakeEntity): Promise<void> {
+    await this.repository.save(makeEntity);
+  }
+  
+  async updateById(id: string, makeEntity: MakeEntity): Promise<void> {
+    await this.repository.update({ id }, makeEntity);
+  }
+  
+  async deleteById(id: string) {
+    await this.repository.softDelete({ id });
   }
 }

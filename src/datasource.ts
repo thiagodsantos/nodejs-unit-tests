@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import { config } from "@src/env";
+import { config } from "./env";
 
 export const datasource = new DataSource({
   type: "mariadb",
@@ -9,6 +9,17 @@ export const datasource = new DataSource({
   username: config.database.username,
   password: config.database.password,
   entities: [__dirname + '/modules/**/entities/*{.js,.ts}'],
-  migrations: [__dirname + '/../migrations/*{.js,.ts}'],
+  migrations: [__dirname + '/migrations/*{.js,.ts}'],
   logging: "all",
 });
+
+export async function initDatabase() {
+  try {
+    console.info('Datasource initializing...');
+    await datasource.initialize();
+    console.info('Datasource initialized...');
+  } catch (error) {
+    console.error(error);
+    throw new Error('Datasource not initialized...');
+  }
+}
