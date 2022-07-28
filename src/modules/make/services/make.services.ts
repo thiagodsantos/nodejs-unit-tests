@@ -2,7 +2,7 @@ import { injectable } from "tsyringe";
 import { MakeRepositoryInterface, MakeRepositoryName } from "@modules/make/repositories/make.repository";
 import { CreateDTO } from "@modules/make/dto/create.dto";
 import { MakeEntity } from "@modules/make/entities/make.entity";
-import { MakeException } from "@modules/make/expections/make.exception";
+import { MakeException } from "@modules/make/exceptions/make.exception";
 import { UpdateDTO } from "@modules/make/dto/update.dto";
 import container from '@src/container';
 
