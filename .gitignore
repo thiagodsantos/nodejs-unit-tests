@@ -6,4 +6,8 @@
 node_modules/
 dist/
 
+# Tests coverage
+coverage/
+.nyc_output/
+
 .env

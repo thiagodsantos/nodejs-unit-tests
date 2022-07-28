@@ -1,4 +1,3 @@
-import 'reflect-metadata';
 import { createExpressServer } from 'routing-controllers';
 import { config } from "@src/env";
 

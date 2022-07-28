@@ -17,8 +17,11 @@ npm-install:
 npm-run:
 	$(docker_node) "npm run $(script)"
 
+npm-test:
+	$(docker_node) "npm run test"
+
 tsc:
-	$(docker_node) "tsc $(arg)"
+	$(docker_node) "tsc"
 
 migration-generate:
 	$(docker_node) "npm run migration:generate ./src/migrations/$(file)"

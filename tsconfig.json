@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
-    "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
-    "module": "commonjs",                                /* Specify what module code is generated. */
+    "baseUrl": "./",                                      /* Specify the base directory to resolve non-relative module names. */
     "rootDir": "./src",                                  /* Specify the root folder within your source files. */
     "outDir": "./dist",                                  /* Specify an output folder for all emitted files. */
+    "target": "es2017",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    "module": "commonjs",                                /* Specify what module code is generated. */
     "moduleResolution": "node",                          /* Specify how TypeScript looks up a file from a given module specifier. */
     "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
     "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
@@ -13,11 +14,11 @@
     "emitDecoratorMetadata": true,                       /* Emit design-type metadata for decorated declarations in source files. */
     "experimentalDecorators": true,                      /* Enable experimental support for TC39 stage 2 draft decorators. */
     "strictPropertyInitialization": false,               /* Check for class properties that are declared but not set in the constructor. */
-    "baseUrl": ".",                                      /* Specify the base directory to resolve non-relative module names. */
+    "sourceMap": true,                                   /* Create source map files for emitted JavaScript files. */
     "paths": {
       "@src/*": ["./src/*"],
       "@modules/*": ["./src/modules/*"]
-    },                                                   /* Specify a set of entries that re-map imports to additional lookup locations. */
+    }                                                   /* Specify a set of entries that re-map imports to additional lookup locations. */
     
     /* Projects */
     // "incremental": true,                              /* Save .tsbuildinfo files to allow for incremental compilation of projects. */
@@ -56,7 +57,6 @@
     // "declaration": true,                              /* Generate .d.ts files from TypeScript and JavaScript files in your project. */
     // "declarationMap": true,                           /* Create sourcemaps for d.ts files. */
     // "emitDeclarationOnly": true,                      /* Only output d.ts files and not JavaScript files. */
-    // "sourceMap": true,                                /* Create source map files for emitted JavaScript files. */
     // "outFile": "./",                                  /* Specify a file that bundles all outputs into one JavaScript file. If 'declaration' is true, also designates a file that bundles all .d.ts output. */
     // "removeComments": true,                           /* Disable emitting comments. */
     // "noEmit": true,                                   /* Disable emitting files from a compilation. */
@@ -102,5 +102,5 @@
 
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
-  }
+  },
 }
