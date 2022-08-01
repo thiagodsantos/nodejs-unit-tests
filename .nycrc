@@ -2,7 +2,7 @@
   "extends": "@istanbuljs/nyc-config-typescript",
   "lines": 70,
   "all": true,
-  "check-coverage": true,
+
   "instrument": true,
   "report-dir": "./coverage",
   "include": [
