@@ -1,0 +1,14 @@
+{
+  "all": true,
+  "check-coverage": true,
+  "lines": 70,
+  "include": [
+    "src/modules/**/*.ts"
+  ],
+  "report-dir": "./coverage",
+  "reporter": [
+    "html",
+    "text",
+    "text-summary"
+  ]
+}

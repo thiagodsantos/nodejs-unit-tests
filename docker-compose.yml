@@ -10,3 +10,8 @@ services:
       MYSQL_DATABASE: car_dealer
       MYSQL_USER: car_dealer
       MYSQL_PASSWORD: passwd
+    networks:
+      - database-network
+networks:
+  database-network:
+    driver: bridge
