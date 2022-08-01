@@ -5,7 +5,7 @@
     "migration:generate": "typeorm-ts-node-esm migration:generate -d ./src/datasource.ts",
     "migration:run": "typeorm-ts-node-esm migration:run -d ./src/datasource.ts",
     "start:dev": "ts-node -r tsconfig-paths/register ./src/index.ts",
-    "test": "ts-mocha ./src/**/**.test.ts",
+    "test": "ts-mocha --exit ./src/**/**.test.ts",
     "coverage": "nyc npm run test"
   },
   "dependencies": {

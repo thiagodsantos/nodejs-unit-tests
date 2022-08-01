@@ -1,14 +1,17 @@
 import { injectable } from "tsyringe";
-import { MakeRepositoryInterface, MakeRepositoryName } from "@modules/make/repositories/make.repository";
+import { MakeRepositoryInterface } from "@modules/make/repositories/make.repository";
 import { CreateDTO } from "@modules/make/dto/create.dto";
 import { MakeEntity } from "@modules/make/entities/make.entity";
 import { MakeException } from "@modules/make/exceptions/make.exception";
 import { UpdateDTO } from "@modules/make/dto/update.dto";
-import container from '@src/container';
 
 @injectable()
 export class MakeService {
-  private readonly repository: MakeRepositoryInterface = container.resolve(MakeRepositoryName);
+  private repository: MakeRepositoryInterface;
+  
+  constructor(makeRepository: MakeRepositoryInterface) {
+    this.repository = makeRepository;
+  }
   
   async getAll(): Promise<MakeEntity[]> {
     return await this.repository.getAll();

@@ -2,10 +2,15 @@ import { injectable } from "tsyringe";
 import { datasource } from "@src/datasource";
 import { MakeEntity } from "@modules/make/entities/make.entity";
 import { MakeRepositoryInterface } from "@modules/make/repositories/make.repository";
+import { Repository } from "typeorm";
 
 @injectable()
 export class MakeRepository implements MakeRepositoryInterface {
-  private readonly repository = datasource.getRepository(MakeEntity);
+  private repository: Repository<MakeEntity>;
+  
+  constructor() {
+    this.repository = datasource.getRepository(MakeEntity);
+  }
   
   async getAll(): Promise<MakeEntity[]> {
     return await this.repository.find({ order: { name: 'ASC' } });
