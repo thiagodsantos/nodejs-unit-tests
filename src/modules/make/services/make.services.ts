@@ -1,9 +1,9 @@
 import { injectable } from "tsyringe";
 import { MakeRepositoryInterface } from "@modules/make/repositories/make.repository";
-import { CreateDTO } from "@modules/make/dto/create.dto";
+import { MakeCreateDTO } from "@modules/make/dto/make-create.dto";
 import { MakeEntity } from "@modules/make/entities/make.entity";
 import { MakeException } from "@modules/make/exceptions/make.exception";
-import { UpdateDTO } from "@modules/make/dto/update.dto";
+import { MakeUpdateDTO } from "@modules/make/dto/make-update.dto";
 
 @injectable()
 export class MakeService {
@@ -18,16 +18,11 @@ export class MakeService {
   }
   
   async getById(id: string): Promise<MakeEntity | null> {
-    const make = await this.repository.getById(id);
-    if (!make) {
-      throw MakeException.notExists()
-    }
-    
-    return make;
+    return await this.getMakeById(id);
   }
   
-  async create(createDTO: CreateDTO): Promise<MakeEntity> {
-    const makeExists = await this.repository.getByName(createDTO.name, true);
+  async create(makeCreateDTO: MakeCreateDTO): Promise<MakeEntity> {
+    const makeExists = await this.repository.getByName(makeCreateDTO.name, true);
     if (makeExists && !makeExists.deletedAt) {
       throw MakeException.alreadyExists();
     }
@@ -40,25 +35,22 @@ export class MakeService {
     }
     
     const entity = new MakeEntity();
-    entity.fromCreateDTO(createDTO);
+    entity.fromCreateDTO(makeCreateDTO);
     
     await this.repository.create(entity);
     
     return entity;
   }
   
-  async updateById(id: string, updateDTO: UpdateDTO): Promise<MakeEntity> {
-    const make = await this.repository.getById(id);
-    if (!make) {
-      throw MakeException.notExists();
-    }
-  
-    const makeExists = await this.repository.getByName(updateDTO.name);
+  async updateById(id: string, makeUpdateDTO: MakeUpdateDTO): Promise<MakeEntity> {
+    const make = await this.getMakeById(id);
+
+    const makeExists = await this.repository.getByName(makeUpdateDTO.name);
     if (makeExists && makeExists.id !== id) {
       throw MakeException.alreadyExists();
     }
     
-    make.fromUpdateDTO(updateDTO);
+    make.fromUpdateDTO(makeUpdateDTO);
     
     await this.repository.updateById(id, make);
     
@@ -66,16 +58,18 @@ export class MakeService {
   }
   
   async deleteById(id: string): Promise<MakeEntity> {
+    const make = await this.getMakeById(id);
+    
+    await this.repository.deleteById(id);
+    
+    return make;
+  }
+  
+  private async getMakeById(id: string): Promise<MakeEntity> {
     const make = await this.repository.getById(id);
     if (!make) {
       throw MakeException.notExists();
     }
-    
-    if (make.deletedAt) {
-      return make;
-    }
-    
-    await this.repository.deleteById(id);
     
     return make;
   }

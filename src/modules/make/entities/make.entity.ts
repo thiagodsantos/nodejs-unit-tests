@@ -1,7 +1,7 @@
 import { Exclude } from "class-transformer";
 import { Column, DeleteDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { CreateDTO } from "@modules/make/dto/create.dto";
-import { UpdateDTO } from "@modules/make/dto/update.dto";
+import { MakeCreateDTO } from "@modules/make/dto/make-create.dto";
+import { MakeUpdateDTO } from "@modules/make/dto/make-update.dto";
 
 @Entity({ name: 'make' })
 export class MakeEntity {
@@ -15,11 +15,11 @@ export class MakeEntity {
   @DeleteDateColumn()
   deletedAt: Date | null;
   
-  fromCreateDTO(createDTO: CreateDTO) {
+  fromCreateDTO(createDTO: MakeCreateDTO) {
     this.name = createDTO.name;
   }
   
-  fromUpdateDTO(updateDTO: UpdateDTO) {
+  fromUpdateDTO(updateDTO: MakeUpdateDTO) {
     this.name = updateDTO.name;
   }
 }
