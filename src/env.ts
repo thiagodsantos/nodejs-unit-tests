@@ -1,5 +1,6 @@
 const app = {
-  port: parseInt(process.env.APP_PORT ?? "4200")
+  port: parseInt(process.env.APP_PORT ?? "4200"),
+  debug: process.env.NODE_ENV !== "production"
 }
 
 const database = {

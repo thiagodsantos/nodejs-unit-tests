@@ -10,7 +10,7 @@ export const datasource = new DataSource({
   password: config.database.password,
   entities: [__dirname + '/modules/**/entities/*{.js,.ts}'],
   migrations: [__dirname + '/migrations/*{.js,.ts}'],
-  logging: "all",
+  logging: config.app.debug ? "all" : ["error", "migration"],
 });
 
 export async function initDatabase() {
