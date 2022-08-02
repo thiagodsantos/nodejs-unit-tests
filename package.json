@@ -1,4 +1,9 @@
 {
+  "author": {
+    "email": "thiago.dsantos@outlook.com",
+    "name": "Thiago Santos",
+    "url": "https://www.linkedin.com/in/thiago-dos-santos"
+  },
   "scripts": {
     "build": "tsc",
     "linter": "eslint ./src/*",
