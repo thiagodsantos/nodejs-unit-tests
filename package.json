@@ -1,6 +1,8 @@
 {
   "scripts": {
     "build": "tsc",
+    "linter": "eslint ./src/*",
+    "linter:fix": "eslint --fix ./src/*",
     "start": "NODE_ENV=production node dist/index.js",
     "migration:generate": "typeorm-ts-node-esm migration:generate -d ./src/datasource.ts",
     "migration:run": "typeorm-ts-node-esm migration:run -d ./src/datasource.ts",
@@ -9,6 +11,7 @@
     "coverage": "NODE_ENV=test nyc ts-mocha --paths --type-check --timeout 10000 -r reflect-metadata ./test/**/**.test.ts"
   },
   "dependencies": {
+    "@eslint/create-config": "^0.3.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     "express": "^4.18.1",
@@ -28,6 +31,10 @@
     "@types/node": "^18.6.1",
     "@types/sinon": "^10.0.13",
     "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
+    "eslint": "^8.21.0",
+    "eslint-config-standard": "^17.0.0",
     "expect": "^28.1.3",
     "mocha": "^10.0.0",
     "nyc": "^15.1.0",

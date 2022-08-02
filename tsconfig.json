@@ -4,7 +4,7 @@
     "baseUrl": "./",                                      /* Specify the base directory to resolve non-relative modules names. */
     "rootDir": "./src",                                  /* Specify the root folder within your source files. */
     "outDir": "./dist",                                  /* Specify an output folder for all emitted files. */
-    "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    "target": "es2021",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
     "module": "commonjs",                                /* Specify what modules code is generated. */
     "moduleResolution": "node",                          /* Specify how TypeScript looks up a file from a given modules specifier. */
     "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */

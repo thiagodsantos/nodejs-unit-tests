@@ -8,6 +8,12 @@ docker_node = docker run ${docker_port} --rm ${docker_name} ${docker_env} ${dock
 build:
 	docker build -t node-ts .
 
+linter:
+	$(docker_node) "npm run linter"
+
+linter-fix:
+	$(docker_node) "npm run linter:fix"
+
 node:
 	$(docker_node) "node $(file)"
 
