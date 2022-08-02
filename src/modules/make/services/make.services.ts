@@ -27,7 +27,7 @@ export class MakeService {
       throw MakeException.alreadyExists();
     }
     
-    if (makeExists && makeExists.deletedAt) {
+    if (makeExists?.deletedAt) {
       makeExists.deletedAt = null;
       await this.repository.updateById(makeExists.id, makeExists);
       

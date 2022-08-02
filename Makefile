@@ -8,6 +8,9 @@ docker_node = docker run ${docker_port} --rm ${docker_name} ${docker_env} ${dock
 build:
 	docker build -t node-ts .
 
+node:
+	$(docker_node) "node $(file)"
+
 npm:
 	$(docker_node) "npm $(arg)"
 

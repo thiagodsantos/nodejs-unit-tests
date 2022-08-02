@@ -5,6 +5,9 @@
   "include": [
     "src/modules/**/*.ts"
   ],
+  "exclude": [
+    "src/modules/**/infrastructure/**"
+  ],
   "report-dir": "./coverage",
   "reporter": [
     "html",

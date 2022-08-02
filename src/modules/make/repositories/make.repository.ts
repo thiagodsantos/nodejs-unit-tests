@@ -1,6 +1,6 @@
 import { MakeEntity } from "@modules/make/entities/make.entity";
 
-export const MakeRepositoryName = 'MakeRepositoryInterface';
+export const MakeRepositoryToken = 'MakeRepositoryInterface';
 
 export interface MakeRepositoryInterface {
   getAll(): Promise<MakeEntity[]>;
