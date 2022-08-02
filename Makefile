@@ -20,6 +20,12 @@ npm-run:
 npm-test:
 	$(docker_node) "npm run test"
 
+npm-test:
+	$(docker_node) "npm run test"
+
+npm-test-file:
+	$(docker_node) "NODE_ENV=test node_modules/ts-mocha/bin/ts-mocha --paths --type-check --timeout 10000 -r reflect-metadata $(file)"
+
 tsc:
 	$(docker_node) "tsc"
 

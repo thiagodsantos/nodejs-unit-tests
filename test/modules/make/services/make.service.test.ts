@@ -18,7 +18,7 @@ describe('MakeService', () => {
   
   afterEach(() => {
     sandbox.restore();
-  })
+  });
   
   it('getAll should works', async () => {
     const makeEntity = new MakeEntity();
