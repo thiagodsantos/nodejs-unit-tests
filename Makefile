@@ -26,8 +26,11 @@ npm-install:
 npm-run:
 	$(docker_node) "npm run $(script)"
 
-npm-test:
-	$(docker_node) "npm run test"
+npm-start:
+	$(docker_node) "npm run linter && npm run build && npm start"
+
+npm-start-dev:
+	$(docker_node) "npm run start:dev"
 
 npm-test:
 	$(docker_node) "npm run test"
