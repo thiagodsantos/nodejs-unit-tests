@@ -30,12 +30,9 @@ make migration-run
 make linter && make build
 ```
 
-And again you'd need to tell what the previous code actually does.
-
 ## Versioning
 
 We can maybe use [SemVer](http://semver.org/) for versioning. For the versions available, see the [link to tags on this repository](/tags).
-
 
 ## Environment variables
 
