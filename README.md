@@ -30,11 +30,7 @@ make migration-run
 make linter && make build
 ```
 
-## Versioning
-
-We can maybe use [SemVer](http://semver.org/) for versioning. For the versions available, see the [link to tags on this repository](/tags).
-
-## Environment variables
+### Environment variables
 
 - NODE_ENV
 - APP_PORT
@@ -44,7 +40,7 @@ We can maybe use [SemVer](http://semver.org/) for versioning. For the versions a
 - DB_USER
 - DB_PASSWD
 
-## Tests
+### Tests
 
 ```shell
 make npm-test
@@ -54,11 +50,11 @@ make npm-test
 make npm-test-coverage
 ```
 
-## Style guide
+### Style guide
 
 Standard
 
-## Database
+### Database
 
 MySQL (mariadb)
 
