@@ -8,10 +8,10 @@
     "build": "tsc",
     "linter": "eslint ./src/*",
     "linter:fix": "eslint --fix ./src/*",
-    "start": "NODE_ENV=production node dist/index.js",
+    "start": "NODE_ENV=production node dist/src/index.js",
+    "start:dev": "NODE_ENV=development ts-node -r tsconfig-paths/register ./src/index.ts",
     "migration:generate": "typeorm-ts-node-esm migration:generate -d ./src/datasource.ts",
     "migration:run": "typeorm-ts-node-esm migration:run -d ./src/datasource.ts",
-    "start:dev": "NODE_ENV=development ts-node -r tsconfig-paths/register ./src/index.ts",
     "test": "NODE_ENV=test ts-mocha --paths --type-check --timeout 10000 -r reflect-metadata ./test/**/**.test.ts",
     "coverage": "NODE_ENV=test nyc ts-mocha --paths --type-check --timeout 10000 -r reflect-metadata ./test/**/**.test.ts"
   },
