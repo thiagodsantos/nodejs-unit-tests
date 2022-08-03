@@ -10,6 +10,16 @@
 Here's a brief intro about what a developer must do in order to start developing
 the project further:
 
+### Environment variables
+
+- NODE_ENV
+- APP_PORT
+- DB_HOST
+- DB_PORT
+- DB_NAME
+- DB_USER
+- DB_PASSWD
+
 ```shell
 git clone https://github.com/thiagodsantos/nodejs-unit-tests.git
 cd nodejs-unit-tests/
@@ -29,16 +39,6 @@ make migration-run
 ```shell
 make linter && make build
 ```
-
-### Environment variables
-
-- NODE_ENV
-- APP_PORT
-- DB_HOST
-- DB_PORT
-- DB_NAME
-- DB_USER
-- DB_PASSWD
 
 ### Tests
 
