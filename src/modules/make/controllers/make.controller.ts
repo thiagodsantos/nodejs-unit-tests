@@ -1,7 +1,7 @@
-import { Body, Delete, Get, JsonController, Param, Post, Put } from "routing-controllers";
-import { MakeService } from "@modules/make/services/make.services";
-import { MakeCreateDTO } from "@modules/make/dto/make-create.dto";
-import { MakeUpdateDTO } from "@modules/make/dto/make-update.dto";
+import { Body, Delete, Get, JsonController, Param, Post, Put } from 'routing-controllers';
+import { MakeService } from '@modules/make/services/make.services';
+import { MakeCreateDTO } from '@modules/make/dto/make-create.dto';
+import { MakeUpdateDTO } from '@modules/make/dto/make-update.dto';
 import container from '@src/container';
 
 @JsonController('/make')

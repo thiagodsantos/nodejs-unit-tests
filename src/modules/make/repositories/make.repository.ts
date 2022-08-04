@@ -1,4 +1,4 @@
-import { MakeEntity } from "@modules/make/entities/make.entity";
+import { MakeEntity } from '@modules/make/entities/make.entity';
 
 export const MakeRepositoryToken = 'MakeRepositoryInterface';
 

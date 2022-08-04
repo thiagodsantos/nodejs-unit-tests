@@ -1,8 +1,8 @@
-import { DataSource } from "typeorm";
-import { config } from "./env";
+import { DataSource } from 'typeorm';
+import { config } from './env';
 
 export const datasource = new DataSource({
-  type: "mariadb",
+  type: 'mariadb',
   host: config.database.host,
   port: config.database.port,
   database: config.database.name,
@@ -10,7 +10,7 @@ export const datasource = new DataSource({
   password: config.database.password,
   entities: [__dirname + '/modules/**/entities/*{.js,.ts}'],
   migrations: [__dirname + '/migrations/*{.js,.ts}'],
-  logging: config.app.debug ? "all" : ["error", "migration"],
+  logging: config.app.debug ? 'all' : ['error', 'migration'],
 });
 
 export async function initDatabase() {

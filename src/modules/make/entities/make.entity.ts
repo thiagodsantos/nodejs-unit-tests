@@ -1,7 +1,7 @@
-import { Exclude } from "class-transformer";
-import { Column, DeleteDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { MakeCreateDTO } from "@modules/make/dto/make-create.dto";
-import { MakeUpdateDTO } from "@modules/make/dto/make-update.dto";
+import { Exclude } from 'class-transformer';
+import { Column, DeleteDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { MakeCreateDTO } from '@modules/make/dto/make-create.dto';
+import { MakeUpdateDTO } from '@modules/make/dto/make-update.dto';
 
 @Entity({ name: 'make' })
 export class MakeEntity {

@@ -1,9 +1,9 @@
-import { injectable } from "tsyringe";
-import { MakeRepositoryInterface } from "@modules/make/repositories/make.repository";
-import { MakeCreateDTO } from "@modules/make/dto/make-create.dto";
-import { MakeEntity } from "@modules/make/entities/make.entity";
-import { MakeException } from "@modules/make/exceptions/make.exception";
-import { MakeUpdateDTO } from "@modules/make/dto/make-update.dto";
+import { injectable } from 'tsyringe';
+import { MakeRepositoryInterface } from '@modules/make/repositories/make.repository';
+import { MakeCreateDTO } from '@modules/make/dto/make-create.dto';
+import { MakeEntity } from '@modules/make/entities/make.entity';
+import { MakeException } from '@modules/make/exceptions/make.exception';
+import { MakeUpdateDTO } from '@modules/make/dto/make-update.dto';
 
 @injectable()
 export class MakeService {

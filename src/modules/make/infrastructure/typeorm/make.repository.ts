@@ -1,8 +1,8 @@
-import { injectable } from "tsyringe";
-import { Repository } from "typeorm";
-import { datasource } from "@src/datasource";
-import { MakeEntity } from "@modules/make/entities/make.entity";
-import { MakeRepositoryInterface } from "@modules/make/repositories/make.repository";
+import { injectable } from 'tsyringe';
+import { Repository } from 'typeorm';
+import { datasource } from '@src/datasource';
+import { MakeEntity } from '@modules/make/entities/make.entity';
+import { MakeRepositoryInterface } from '@modules/make/repositories/make.repository';
 
 @injectable()
 export class MakeRepository implements MakeRepositoryInterface {

@@ -1,5 +1,5 @@
 import { createExpressServer } from 'routing-controllers';
-import { config } from "@src/env";
+import { config } from '@src/env';
 
 export async function initServer() {
   const app = createExpressServer({
