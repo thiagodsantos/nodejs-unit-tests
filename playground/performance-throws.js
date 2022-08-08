@@ -1,4 +1,4 @@
-const MAX_ITERATOR = 1000000; // 1 million
+const MAX_ITERATOR = 100000; // 1 million
 
 function findAgeNoThrows(name) {
   if (!name) {
@@ -38,14 +38,14 @@ function main () {
     findAgeWithEx();
   }
   const end = +new Date();
-  console.log(end - start);
+  console.log("Exception performance:", end - start);
 
   const start2 = +new Date();
   for (let i = 0; i < MAX_ITERATOR; i++) {
     findAgeWithoutEx();
   }
   const end2 = +new Date();
-  console.log(end2 - start2);
+  console.log("No Exception performance:", end2 - start2);
 }
 
 main();

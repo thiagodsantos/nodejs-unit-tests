@@ -35,6 +35,9 @@ npm-start-dev:
 npm-test:
 	$(docker_node) "npm run test"
 
+npm-test-coverage:
+	$(docker_node) "npm run coverage"
+
 npm-test-file:
 	$(docker_node) "NODE_ENV=test node_modules/ts-mocha/bin/ts-mocha --paths --type-check --timeout 10000 -r reflect-metadata $(file)"
 

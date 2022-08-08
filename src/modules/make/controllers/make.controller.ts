@@ -6,7 +6,11 @@ import container from '@src/container';
 
 @JsonController('/make')
 export class MakeController {
-  private readonly makeService: MakeService = container.resolve(MakeService);
+  private makeService: MakeService;
+  
+  constructor() {
+    this.makeService = container.resolve(MakeService);
+  }
   
   @Get()
   async getAll() {

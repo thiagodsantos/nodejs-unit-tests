@@ -36,7 +36,6 @@ export class MakeService {
     
     const entity = new MakeEntity();
     entity.fromCreateDTO(makeCreateDTO);
-    
     await this.repository.create(entity);
     
     return entity;
@@ -51,7 +50,6 @@ export class MakeService {
     }
     
     make.fromUpdateDTO(makeUpdateDTO);
-    
     await this.repository.updateById(id, make);
     
     return make;
@@ -59,7 +57,6 @@ export class MakeService {
   
   async deleteById(id: string): Promise<MakeEntity> {
     const make = await this.getMakeById(id);
-    
     await this.repository.deleteById(id);
     
     return make;

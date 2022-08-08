@@ -13,7 +13,7 @@ describe('MakeService: ' + __filename, () => {
   const makeRepository = new MakeRepository();
   
   beforeEach(() => {
-    sandbox.verify();
+  
   });
   
   afterEach(() => {
@@ -30,6 +30,7 @@ describe('MakeService: ' + __filename, () => {
     
       sandbox.mock(makeRepository)
         .expects("getAll")
+        .once()
         .returns(expected);
     
       const service = new MakeService(makeRepository);
@@ -49,12 +50,15 @@ describe('MakeService: ' + __filename, () => {
     
       sandbox.mock(makeRepository)
         .expects("getById")
+        .once()
         .returns(expected);
     
       const service = new MakeService(makeRepository);
       const result = await service.getById(makeEntity.id);
     
       expect(result).toBe(expected);
+  
+      sandbox.verify();
     });
     
     it('getById should throw exception when make not exists', async () => {
@@ -62,11 +66,14 @@ describe('MakeService: ' + __filename, () => {
       
       sandbox.mock(makeRepository)
         .expects("getById")
+        .once()
         .returns(expected);
     
       const service = new MakeService(makeRepository);
       await expect(service.getById("d5787550-74a5-40c6-a7e2-0d0e54f75709"))
         .rejects.toThrow(MakeException.notExists());
+  
+      sandbox.verify();
     });
   });
   
@@ -80,12 +87,13 @@ describe('MakeService: ' + __filename, () => {
       
       sandbox.mock(makeRepository)
         .expects("getByName")
+        .once()
         .returns(null)
     
       sandbox.mock(makeRepository)
         .expects("create")
-        .withArgs(makeEntity)
-        .once();
+        .once()
+        .withArgs(makeEntity);
       
       const service = new MakeService(makeRepository);
       const result = await service.create(makeCreateDTO);
@@ -105,11 +113,13 @@ describe('MakeService: ' + __filename, () => {
     
       sandbox.mock(makeRepository)
         .expects("getByName")
+        .once()
         .withArgs(makeCreateDTO.name, true)
         .returns(makeEntity);
     
       sandbox.mock(makeRepository)
         .expects("updateById")
+        .once()
         .withArgs(makeEntity.id, makeEntity);
     
       sandbox.mock(makeRepository)
@@ -122,6 +132,8 @@ describe('MakeService: ' + __filename, () => {
       expect(result).toBeInstanceOf(MakeEntity);
       expect(result.id).toBe(makeEntity.id);
       expect(result.deletedAt).toBeNull();
+  
+      sandbox.verify();
     });
     
     it('create should throw exception when make by name already exists', async () => {
@@ -135,12 +147,15 @@ describe('MakeService: ' + __filename, () => {
     
       sandbox.mock(makeRepository)
         .expects("getByName")
+        .once()
         .withArgs(makeCreateDTO.name, true)
         .returns(makeEntity);
     
       const service = new MakeService(makeRepository);
       await expect(service.create(makeCreateDTO))
         .rejects.toThrow(MakeException.alreadyExists());
+  
+      sandbox.verify();
     });
   });
   
@@ -161,11 +176,13 @@ describe('MakeService: ' + __filename, () => {
     
       sandbox.mock(makeRepository)
         .expects("getByName")
+        .once()
         .withArgs(makeUpdateDTO.name)
         .returns(null);
     
       sandbox.mock(makeRepository)
         .expects("updateById")
+        .once()
         .withArgs(id, makeEntity);
     
       const service = new MakeService(makeRepository);
@@ -173,6 +190,8 @@ describe('MakeService: ' + __filename, () => {
     
       expect(result).toBeInstanceOf(MakeEntity);
       expect(result.name).toBe(makeUpdateDTO.name);
+  
+      sandbox.verify();
     });
     
     it('updateById should throw exception when make by name already exists in another make', async () => {
@@ -190,17 +209,21 @@ describe('MakeService: ' + __filename, () => {
     
       sandbox.mock(makeRepository)
         .expects("getById")
+        .once()
         .withArgs(id)
         .returns(makeEntity);
     
       sandbox.mock(makeRepository)
         .expects("getByName")
+        .once()
         .withArgs(makeUpdateDTO.name)
         .returns(makeEntityExistsByName);
       
       const service = new MakeService(makeRepository);
       await expect(service.updateById(id, makeUpdateDTO))
         .rejects.toThrow(MakeException.alreadyExists());
+  
+      sandbox.verify();
     });
   });
   
@@ -213,11 +236,13 @@ describe('MakeService: ' + __filename, () => {
       
       sandbox.mock(makeRepository)
         .expects("getById")
+        .once()
         .withArgs(id)
         .returns(makeEntity);
     
       sandbox.mock(makeRepository)
         .expects("deleteById")
+        .once()
         .withArgs(id);
     
       const service = new MakeService(makeRepository);
@@ -225,6 +250,8 @@ describe('MakeService: ' + __filename, () => {
     
       expect(result).toBeInstanceOf(MakeEntity);
       expect(result.id).toBe(id);
+  
+      sandbox.verify();
     });
     
     it('deleteById should throw exception when make not exists', async () => {
@@ -232,6 +259,7 @@ describe('MakeService: ' + __filename, () => {
       
       sandbox.mock(makeRepository)
         .expects("getById")
+        .once()
         .withArgs(id)
         .returns(null);
     
@@ -242,6 +270,8 @@ describe('MakeService: ' + __filename, () => {
       const service = new MakeService(makeRepository);
       await expect(service.deleteById(id))
         .rejects.toThrow(MakeException.notExists());
+  
+      sandbox.verify();
     });
   });
 });
