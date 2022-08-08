@@ -4,7 +4,7 @@ import { config } from '@src/env';
 export async function initServer() {
   const app = createExpressServer({
     controllers: [__dirname + '/modules/**/controllers/*{.js,.ts}'],
-    development: true
+    development: config.app.debug === true
   });
   
   try {
