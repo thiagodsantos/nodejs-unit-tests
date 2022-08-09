@@ -1,7 +1,7 @@
 import { expect } from "expect";
 import { afterEach, beforeEach } from "mocha";
 import { createSandbox } from "sinon";
-import { MakeService } from "@modules/make/services/make.services";
+import { MakeService } from "@modules/make/services/make.service";
 import { MakeRepository } from "@modules/make/infrastructure/typeorm/make.repository";
 import { MakeEntity } from "@modules/make/entities/make.entity";
 import { MakeCreateDTO } from "@modules/make/dto/make-create.dto";

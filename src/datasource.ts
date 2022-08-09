@@ -11,6 +11,7 @@ export const datasource = new DataSource({
   entities: [__dirname + '/modules/**/entities/*{.js,.ts}'],
   migrations: [__dirname + '/migrations/*{.js,.ts}'],
   logging: config.app.debug ? 'all' : ['error', 'migration'],
+  logger: 'advanced-console'
 });
 
 export async function initDatabase() {
